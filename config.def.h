@@ -45,7 +45,11 @@ static const Rule rules[] = {
 	/* class      instance    title       tags mask     isfloating   monitor */
 	{ "Gimp",	      NULL,			NULL,		    0,				        1,			 -1 },
 	{ "Firefox",    NULL,			NULL,		    1 << 8,			      0,			 -1 },
-	{ NULL,       "stfloat",			NULL,		0,			          1,			 -1 },
+	{ "Brave",    NULL,			NULL,		      1,			          0,			 1 },
+	{ "Signal",    NULL,			NULL,		      2,			          0,			 1 },
+	{ NULL,    "discord",			NULL,		      4,			          0,			 1 },
+	{ "Bitwarden",    NULL,			NULL,		   8,			          0,			 0 },
+	{ NULL,       "stfloat",	NULL,		    0,			          1,			 -1 },
 	{ NULL,		    "spterm",		NULL,		    SPTAG(0),		      1,			 -1 },
 	{ NULL,		     "spfm",		NULL,	      SPTAG(1),		      1,			 -1 },
 	{ NULL,		   "sptemr",	  NULL,		    SPTAG(2),		      1,			 -1 },
@@ -65,6 +69,8 @@ static const Layout layouts[] = {
 	{ "[M]",      monocle },
  	{ "[@]",      spiral },
  	{ "[\\]",      dwindle },
+	{ "|M|",      centeredmaster },
+	{ ">M>",      centeredfloatingmaster },
 	{ NULL,       NULL },
 };
 
@@ -106,6 +112,7 @@ static Key keys[] = {
 	{ MODKEY,		                    XK_Tab,    cyclelayout,    {.i = -1 } },
 	{ MODKEY|ControlMask,           XK_space,  setlayout,      {0} },
 	{ MODKEY|ShiftMask,             XK_f,      togglefloating, {0} },
+	{ MODKEY|ShiftMask,             XK_p,  focusmaster,    {0} },
 	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
 	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
 	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
@@ -126,14 +133,16 @@ static Key keys[] = {
 	TAGKEYS(                        XK_9,                      8)
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
 	{ MODKEY|ControlMask|ShiftMask, XK_q,      quit,           {1} }, 
-	// { MODKEY|ControlMask,           XK_period, cyclelayout,    {.i = +1 } },
-	// { MODKEY,                       XK_period, focusmon,       {.i = +1 } },
-	// { MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
-	// { MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
-	// { MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
-	// { MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
-	// { MODKEY,                       XK_r,      setlayout,      {.v = &layouts[3]} },
-	// { MODKEY|ShiftMask,             XK_r,      setlayout,      {.v = &layouts[4]} },
+	{ MODKEY|ShiftMask,             XK_t,      setlayout,      {.v = &layouts[0]} },
+	{ MODKEY|ShiftMask,             XK_m,      setlayout,      {.v = &layouts[2]} },
+	{ MODKEY|ShiftMask,             XK_r,      setlayout,      {.v = &layouts[3]} },
+	{ MODKEY|ShiftMask,             XK_c,      setlayout,      {.v = &layouts[5]} },
+	{ MODKEY|ShiftMask,             XK_v,      setlayout,      {.v = &layouts[6]} },
+// { MODKEY|ControlMask,           XK_period, cyclelayout,    {.i = +1 } },
+// { MODKEY,                       XK_period, focusmon,       {.i = +1 } },
+// { MODKEY|ShiftMask,             XK_r,      setlayout,      {.v = &layouts[4]} },
+// { MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
+// { MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
 };
 
 /* button definitions */
