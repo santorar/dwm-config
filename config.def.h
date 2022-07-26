@@ -76,6 +76,7 @@ static const Layout layouts[] = {
 
 /* key definitions */
 #define MODKEY Mod4Mask
+#define ALTKEY Mod1Mask
 #define TAGKEYS(KEY,TAG) \
 	{ MODKEY,                       KEY,      view,           {.ui = 1 << TAG} }, \
 	{ MODKEY|ControlMask,           KEY,      toggleview,     {.ui = 1 << TAG} }, \
@@ -94,7 +95,7 @@ static const char *floattermcmd[]  = { "st","-n","stfloat","-g","144x41", NULL }
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
-	{ MODKEY,                       XK_space,  spawn,          {.v = dmenucmd } },
+	{ ALTKEY,                       XK_space,  spawn,          {.v = dmenucmd } },
 	{ MODKEY,             		      XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = floattermcmd } },
 	{ MODKEY|ShiftMask,             XK_b,      togglebar,      {0} },
